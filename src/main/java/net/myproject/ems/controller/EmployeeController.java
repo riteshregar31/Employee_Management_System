@@ -1,4 +1,5 @@
 package net.myproject.ems.controller;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import net.myproject.ems.dto.EmployeeDto;
@@ -25,4 +26,16 @@ public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto emplo
     return ResponseEntity.ok(employeeByIdDto);
 
 }
+@GetMapping
+ResponseEntity<List<EmployeeDto>> getAllEmployees(){
+    List<EmployeeDto> employees=employeeService.getALlEmployees();
+    return ResponseEntity.ok(employees);
+}
+
+@PutMapping("{id}")
+ResponseEntity<EmployeeDto> updateEmployee (@PathVariable("id") Long employeeId,@RequestBody EmployeeDto updatedEmployee){
+    EmployeeDto employeeDto=employeeService.updataEmployee(employeeId,updatedEmployee);
+    return ResponseEntity.ok(employeeDto);
+}
+
 }
