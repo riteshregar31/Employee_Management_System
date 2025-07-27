@@ -38,4 +38,10 @@ ResponseEntity<EmployeeDto> updateEmployee (@PathVariable("id") Long employeeId,
     return ResponseEntity.ok(employeeDto);
 }
 
+@DeleteMapping("{id}")
+ResponseEntity<String> deleteEmployeeById(@PathVariable("id") Long employeeId){
+    employeeService.deleteEmployeeById(employeeId);
+    return ResponseEntity.ok("employee has been deleted successfully");
+}
+
 }
